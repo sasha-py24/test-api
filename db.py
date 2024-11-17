@@ -20,12 +20,17 @@ def get_db():
         yield db                    # db генерує повертає обєкт дб
     finally:
         db.close()
+
+
+
 class ModelMetaDatesMixin(Base):    # розширити функціонал іншого Mixin
 
     __abstract__ = True             # ми не додаємо цей модуль в бд, але наслідуємо його в інших. Не дістаємо дані звідси і тд
 
-    created_at = Column(DateTime, default=datetime.utcnow)
-    modified_at = Column(DateTime, default=datetime.utcnow)
+    start_at = Column(DateTime, default=datetime.utcnow)
+    end_at = Column(DateTime, default=datetime.utcnow)
+
+
 
 
 
@@ -34,6 +39,8 @@ class Project(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
+
+
 
 
 
